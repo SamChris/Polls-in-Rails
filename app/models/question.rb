@@ -17,4 +17,23 @@ class Question < ActiveRecord::Base
     foreign_key: :question_id,
     primary_key: :id
   )
+
+  def results
+
+    results = self.answer_choices
+                  .includes(:responses)
+                  .select("*")
+                  .joins(:responses)
+                  .where("answer_choices.question_id = ?", self.id)
+                  .group("answer_choices.text")
+                  .count
+
+    choice_counts = Hash.new(0)
+    self.answer_choices.each do |answer_choice|
+         choice_counts[answer_choice.text] = 0
+       end
+
+    choice_counts.merge(results)
+
+  end
 end

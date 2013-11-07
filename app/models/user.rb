@@ -1,5 +1,17 @@
-class User < ActiveRecord::Base
+class User  <  ActiveRecord::Base
+
   attr_accessible :user_name
 
-  validates :user_name, presence: true, uniqueness: true
+  validates :user_name, uniqueness: true, presence: true
+
+  # has_many(
+  #
+  #
+  #
+  #
+  # )
+  #
+
+
+
 end

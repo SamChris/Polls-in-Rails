@@ -1,5 +1,8 @@
 class Poll < ActiveRecord::Base
-  attr_accessible :author_id, :title
 
-  validates :author_id, :title, presence: true
+  attr_accessible :title, :author_id
+
+  validates :title, :author_id, presence: true
+
+
 end

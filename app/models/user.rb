@@ -4,14 +4,11 @@ class User  <  ActiveRecord::Base
 
   validates :user_name, uniqueness: true, presence: true
 
-  # has_many(
-  #
-  #
-  #
-  #
-  # )
-  #
-
-
+  has_many(
+    :authored_polls,
+    class_name: 'Poll',
+    foreign_key: :author_id,
+    primary_key: :id
+  )
 
 end
